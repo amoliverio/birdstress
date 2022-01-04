@@ -1,0 +1,13 @@
+Treatment,LPS Status,Mean RA,SE,Fold Change from Reference
+Reference,No,81.73,15.42,NA
+Reference,Unknown,14.82,9.11,NA
+Reference,Yes,3.45,1.08,NA
+Stressed,No,15.91,1.84,-0.81
+Stressed,Unknown,42.70,27.89,1.88
+Stressed,Yes,41.40,8.66,11.01
+Recovery,No,29.95,9.46,-0.63
+Recovery,Unknown,53.74,48.14,2.63
+Recovery,Yes,16.31,5.57,3.73
+Wild,No,17.38,5.64,-0.79
+Wild,Unknown,18.84,9.51,0.27
+Wild,Yes,63.78,17.16,17.51
