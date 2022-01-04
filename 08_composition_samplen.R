@@ -1,10 +1,12 @@
 # Other calculations and tables as needed
 
 # data
-load(file="input_16S_rar_birdstress.rda")
+load(file="inputs/input_16S_rar_birdstress.rda")
 
 # samples used overall 
 table(input_16S_rar$map_loaded$Treatment_name)
+table(input_16S_rar$map_loaded$Treatment_name, 
+      input_16S_rar$map_loaded$Sex)
 
 # samples used by week
 weekly = input_16S_rar$map_loaded %>%
@@ -50,3 +52,18 @@ input_16S_rar_wild = filter_data(input_16S_rar, filter_cat = "Treatment_name",
 bird_family_wild = summarize_taxonomy(input_16S_rar_wild, level = 5, relative = T)
 bird_family_wild_means = as.data.frame(sort(rowMeans(bird_family_wild)))
 
+# check weight diffs
+weight_diffs = input_16S_rar_captive$map_loaded %>%
+  filter(Treatment_name != "Recovery") %>%
+  filter(WeightChange != "Not_Measured") %>%
+ # filter(BaselineCORT != "Not_Measured") %>%
+  mutate_at("WeightChange", as.numeric)
+#  mutate_at("BaselineCORT", as.numeric)
+
+diff_acute = aov(weight_diffs$AcuteCORT2 ~ weight_diffs$Treatment_name)
+summary(diff_acute)
+
+diff_base = aov(weight_diffs$BaseCORT2 ~ weight_diffs$Treatment_name)
+summary(diff_base)
+
+ggplot(weight_diffs, aes(Treatment_name, AcuteCORT2)) + geom_boxplot()

@@ -5,7 +5,7 @@ library(ggplot2)
 library(plyr)
 
 # cleaned data
-load(file="input_16S_rar_birdstress.rda")
+load(file="inputs/input_16S_rar_birdstress.rda")
 
 # summarize at family level
 bird_fams = summarize_taxonomy(input_16S_rar, level = 5, relative = T) %>%

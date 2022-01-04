@@ -3,25 +3,18 @@ library(ggplot2)
 library(gridExtra)
 
 # data
-load(file="input_16S_rar_birdstress.rda")
-meta = read.delim("bird_meta_AMO.txt")
+meta = read.csv("inputs/Cultivation_Abundance_CFU_Data.csv")
 
-# clean, add treat cat
+# drop the sample that is missing data
 meta = meta %>%
-  mutate(Treatment = as.factor(Treatment)) %>%
-  mutate(Treatment_name = case_when(Treatment == 'Control' ~ 'Reference',
-                                    Treatment == 'Experimental' ~ 'Stressed',
-                                    Treatment =='No Tx' ~ 'Wild',
-                                    Treatment == 'Recovery' ~ 'Recovery')) %>%
-  mutate(Treatment_name = as.factor(Treatment_name))
-
-# subset (drop 'wild')
-meta = subset(meta, Treatment_name == 'Reference' |
-                Treatment_name == 'Stressed' |
-                Treatment_name == 'Recovery')
-
+  filter(TotalCFUTSA != 'x') %>%
+  mutate_at("TotalCFUTSA", as.numeric) %>%
+  mutate_at("TotalCFUBA", as.numeric)
+  
+  
 # counts
 table(meta$Treatment_name) # by treatment
+table(meta$Treatment_name, meta$Sex)
 sum(table(meta$Treatment_name)) # total n
 
 # by week

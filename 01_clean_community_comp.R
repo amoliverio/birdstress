@@ -17,8 +17,8 @@ library(gridExtra)
 # Reference, Stressed, Recovery, Wild
 
 # input data AMO
-tax_table_fp = '16S_table_tax_filt_AMO.txt' #formatted for input
-map_fp = 'bird_meta_AMO.txt' #formatted for input
+tax_table_fp = 'inputs/16S_table_tax_filt_AMO.txt' #formatted for input
+map_fp = 'inputs/bird_meta_AMO.txt' #formatted for input
 input_16S = load_taxa_table(tax_table_fp, map_fp)
 
 # check total N
@@ -31,7 +31,7 @@ weekly = metadata %>%
   group_by(Treatment) %>%
   count(TreatmentWeek)
 
-# drop unassigned otus at phyla / class level
+# drop unassigned otus
 input_16S <- filter_taxa_from_input(input_16S, at_spec_level = 1, taxa_to_remove = "Unassigned")
 input_16S <- filter_taxa_from_input(input_16S, at_spec_level = 2, taxa_to_remove = "NA")
 
@@ -62,7 +62,7 @@ save(input_16S_rar, s16, meta, file="input_16S_rar_birdstress.rda")
 ###############################################################################
 ###############################################################################
 
-load(file="input_16S_rar_birdstress.rda")
+load(file="inputs/input_16S_rar_birdstress.rda")
 tax_num = input_16S_rar$taxonomy_loaded
 
 #calculate PCoA based on Bray-curtis and calculate the percent variation explained
@@ -98,7 +98,7 @@ adonis(dm.16S ~ Treatment, data=input_16S_rar$map_loaded, permutations = 10000)
 
 # pairwise permanovas
 set.seed(1234)
-perm.pair.treat = calc_pairwise_permanovas(dm.16S, input_16S_rar$map_loaded, "Treatment_name", 999)
+perm.pair.treat = calc_pairwise_permanovas(dm.16S, input_16S_rar$map_loaded, "Treatment_name", 10000)
 
 # Captive: stress vs. reference
 input_16S_rar_exp_notx = filter_data(input_16S_rar, filter_cat = "Treatment_name", keep_vals = c("Stressed", "Reference"))

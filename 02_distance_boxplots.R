@@ -5,7 +5,7 @@ library(mctoolsr)
 library(vegan)
 
   ## Distance boxplots
-load(file="input_16S_rar_birdstress.rda")
+load(file="inputs/input_16S_rar_birdstress.rda")
 
 ## Calculate distances, melt, assign categories
 treatment_names = meta %>%

@@ -2,7 +2,7 @@
 ### Alpha diversity
 
 #read in data
-load(file="input_16S_rar_birdstress.rda")
+load(file="inputs/input_16S_rar_birdstress.rda")
 
 # subsample map to only include experimental birds, with measurements
 input_captive = filter_data(input_16S_rar, "CaptiveorNot", keep_vals = 'Captive')

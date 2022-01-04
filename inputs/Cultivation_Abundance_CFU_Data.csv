@@ -1,0 +1,47 @@
+BirdNumber,BirdID,Sex,CageMatePairingScheme,Treatment,Treatment_name,DateSwabbed,TreatmentWeek,TotalCFUPDA,TotalCFUMYCO,TotalCFUTSA,TotalCFUMAC,TotalCFUBA
+1,318,F,1,Control Baseline,Reference,6/6/11,Week 0,810,0,840,30,138000
+2,284,M,1,Control Baseline,Reference,6/6/11,Week 0,3140,0,3650,2170,6800
+3,295,M,2,Control Baseline,Reference,6/6/11,Week 0,130,0,370,450,74000
+4,292,F,2,Control Baseline,Reference,6/6/11,Week 0,240,0,280,300,600
+5,337,F,3,Control Baseline,Reference,6/6/11,Week 0,600,760,1020,160,19200
+6,332,M,3,Control Baseline,Reference,6/6/11,Week 0,10,0,20,0,0
+7,317,M,4,Experimental,Stressed,6/13/11,Week 1,140,0,460,100,0
+8,334,F,4,Experimental,Stressed,6/13/11,Week 1,440,0,320,390,400
+9,338,M,5,Experimental,Stressed,6/13/11,Week 1,15400,11200,6980,830,264000
+10,290,F,5,Experimental,Stressed,6/13/11,Week 1,0,0,10,0,0
+11,287,M,6,Experimental,Stressed,6/13/11,Week 1,10700,0,10860,0,0
+12,323,F,6,Experimental,Stressed,6/13/11,Week 1,25800,0,27300,0,182000
+14,329,F,7,Control,Reference,6/20/11,Week 2,30,0,10,0,0
+15,298,M,8,Control,Reference,6/20/11,Week 2,3090,0,3900,0,400
+16,320,F,8,Control,Reference,6/20/11,Week 2,10,0,0,0,0
+17,335,M,9,Control,Reference,6/20/11,Week 2,410,0,270,0,8400
+18,296,F,9,Control,Reference,6/20/11,Week 2,80,0,60,0,34400
+13,328,M,7,Control   ,Reference,6/20/11,Week 2,10,0,10,0,200
+19,342,M,10,Experimental,Stressed,6/20/11,Week 2,1320,810,2270,0,136000
+20,291,F,10,Experimental,Stressed,6/20/11,Week 2,40,0,40,0,800
+21,331,M,11,Experimental,Stressed,6/20/11,Week 2,830,0,1000,0,13000
+22,321,F,11,Experimental,Stressed,6/20/11,Week 2,13800,0,13200,10,120000
+23,282,M,12,Experimental,Stressed,6/20/11,Week 2,370,0,850,0,200
+24,312,F,12,Experimental,Stressed,6/20/11,Week 2,380,10,540,0,4400
+25,330,M,13,Experimental,Stressed,6/27/11,Week 3,64000,0,62400,30,88000
+26,289,F,13,Experimental,Stressed,6/27/11,Week 3,60,0,20,0,0
+27,322,M,14,Experimental,Stressed,6/27/11,Week 3,10,0,300,0,0
+28,327,F,14,Experimental,Stressed,6/27/11,Week 3,13000,0,13800,0,400
+29,325,M,15,Experimental,Stressed,6/27/11,Week 3,20,0,20,0,200
+30,315,F,15,Experimental,Stressed,6/27/11,Week 3,10,0,0,0,200
+A,299,M,16,Experimental,Stressed,6/27/11,Week 3,2170,0,2060,0,0
+B,313,F,16,Experimental,Stressed,6/27/11,Week 3,800,0,200,0,7800
+35,336,M,19,Control,Reference,7/6/11,Week 4,20,10,40,0,7800
+36,316,F,19,Control,Reference,7/6/11,Week 4,20,0,40,10,0
+37,324,M,20,Control,Reference,7/6/11,Week 4,1090,0,1330,0,86000
+38,300,F,20,Control,Reference,7/6/11,Week 4,190,0,280,10,0
+31,294,M,17,Experimental - Recovery,Recovery,7/6/11,Week 4,20,0,x,0,x
+32,297,F,17,Experimental - Recovery,Recovery,7/6/11,Week 4,530,0,2610,0,31600
+33,339,M,18,Experimental - Recovery,Recovery,7/6/11,Week 4,1050,0,1150,10,168000
+34,333,F,18,Experimental - Recovery,Recovery,7/6/11,Week 4,1330,0,1820,10,120000
+41,285,M,22,Control,Reference,7/7/11,Week 4,0,0,0,10,0
+42,286,F,22,Control,Reference,7/7/11,Week 4,770,0,690,10,200
+C,344,M,23,Control,Reference,7/7/11,Week 4,70,0,10,10,0
+D,343,F,23,Control,Reference,7/7/11,Week 4,26000,0,27000,580,2000
+39,288,M,21,Experimental - Recovery,Recovery,7/7/11,Week 4,20,0,110,10,0
+40,326,F,21,Experimental - Recovery,Recovery,7/7/11,Week 4,80,0,220,10,2200

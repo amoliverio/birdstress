@@ -9,7 +9,7 @@ library("reshape")
 library("ggplot2")
 
 # read in cleaned data
-load(file="input_16S_rar_birdstress.rda")
+load(file="inputs/input_16S_rar_birdstress.rda")
 s16 = as.data.frame(t(s16))
 
 #how many nonzero counts?
