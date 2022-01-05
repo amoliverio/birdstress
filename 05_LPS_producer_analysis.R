@@ -16,7 +16,7 @@ bird_fams$X = str_remove_all(bird_fams$X, " ")
 
 ##########################
 #read in LPS data
-fams_lps =  read.csv('outputs/bird_fams_AM.csv') %>%
+fams_lps =  read.csv('inputs/bird_fams_AM.csv') %>%
   select(-X.1)
 
 # melt data
