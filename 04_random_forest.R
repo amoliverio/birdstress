@@ -6,7 +6,7 @@ library("rfUtilities")
 library("caret")
 library("vegan")
 library("reshape")
-library("ggplot2")
+library("tidyverse")
 
 # read in cleaned data
 load(file="inputs/input_16S_rar_birdstress.rda")
@@ -49,13 +49,14 @@ predictors= otu_table_scaled_treatment[,1:(ncol(otu_table_scaled_treatment)-1)]
 set.seed(1234)
 RF_treatment_classify<-randomForest(x=predictors,
                                     y=as.factor(otu_table_scaled_treatment$Treatment_name),
-                                    ntree=501, importance=TRUE, proximities=TRUE)
+                                    ntree=10000, importance=TRUE, proximities=TRUE)
 
 #permutation test
+set.seed(1234)
 RF_treatment_classify_sig<-rf.significance(x=RF_treatment_classify,
                                            xdata=predictors,
                                            nperm=1000,
-                                           ntree=501)
+                                           ntree=1000)
 
 #identifying important features
 RF_state_classify_imp <- as.data.frame(RF_treatment_classify$importance)
@@ -120,23 +121,23 @@ top20_m_labels = top20_m %>%
 table(top20_m_labels$genus_otu)
 
 otu_names <- c(
-  `Acinetobacter_EF517956.1.1666` = "Acinetobacter 1",
-  `Acinetobacter_JN082536.1.1536` = "Acinetobacter 2",
-  `Acinetobacter_AB365066.1.1533` = "Acinetobacter 3",
-  `Anaerostipes_DQ905930.1.1794` = "Anaerostipes",
+  `Acinetobacter_AB365066.1.1533` = "Acinetobacter 1",
+  `Acinetobacter_EF517956.1.1666` = "Acinetobacter 2",
+  `Acinetobacter_JN082536.1.1536` = "Acinetobacter 3",
   `Campylobacter_EU559331.1.1470` = "Campylobacter",
   `Catellicoccus_FJ192638.1.1515` = "Catellicoccus 1",
   `Catellicoccus_KF799139.1.1524` = "Catellicoccus 2",
   `Chryseobacterium_JPLY01000001.145690.147219` = "Chryseobacterium",
-  `Clostridium sensu stricto 1_AF018036.1.1512` = "Clostridium",
   `Collinsella_DQ798456.1.1292` = "Collinsella",
+  `Comamonas_EU999001.1.1609` = "Comamonas",
   `Escherichia-Shigella_CCPS01000022.154.1916` = "Escherichia-Shigella",
-  `Glutamicibacter_AF511517.1.1557` = "Glutamicibacter",
   `Lactobacillus_AF197125.1.1555` = "Lactobacillus 1",
   `Lactobacillus_KF178310.1.1559` = "Lactobacillus 2",
+  `Lactococcus_CP015906.2140419.2141977` = "Lactococcus",
   `Massilia_CP012201.3677670.3679209` = "Massilia",
   `Pseudomonas_KJ161326.1.1708` = "Pseudomonas 1",
   `Pseudomonas_KJ535378.1.1545` = "Pseudomonas 2",
+  `Rummeliibacillus_AYTB01000002.62877.64412` = "Rummeliibacillus",
   `Serratia_KF625184.1.1787` = "Romboutsia",
   `Streptococcus_CDMW01000001.16532.18068` = "Streptococcus",
   `Unassigned_AMYT01000015.54.1603` = "Enterococcaceae")
