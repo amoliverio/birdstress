@@ -2,6 +2,12 @@
 
 # data
 load(file="inputs/input_16S_rar_birdstress.rda")
+captive_set = read.csv("inputs/Cultivation_Abundance_CFU_Data.csv")
+
+# all captive samples
+table(captive_set$Treatment_name)
+table(captive_set$Sex)
+table(captive_set$Treatment_name,captive_set$Sex)
 
 # samples used overall 
 table(input_16S_rar$map_loaded$Treatment_name)
@@ -11,7 +17,7 @@ table(input_16S_rar$map_loaded$Treatment_name,
 # samples used by week
 weekly = input_16S_rar$map_loaded %>%
   group_by(Treatment_name) %>%
-  count(TreatmentWeek)
+  dplyr::count(TreatmentWeek)
 
 # taxonomy
 tax = input_16S_rar$taxonomy_loaded

@@ -7,6 +7,7 @@ library("caret")
 library("vegan")
 library("reshape")
 library("tidyverse")
+library("vcd")
 
 # read in cleaned data
 load(file="inputs/input_16S_rar_birdstress.rda")
@@ -51,12 +52,17 @@ RF_treatment_classify<-randomForest(x=predictors,
                                     y=as.factor(otu_table_scaled_treatment$Treatment_name),
                                     ntree=10000, importance=TRUE, proximities=TRUE)
 
+print(RF_treatment_classify)
+confusion = RF_treatment_classify$confusion
+kappa = Kappa(RF_treatment_classify$confusion[,1:4])
+confint(kappa)
+
 #permutation test
-set.seed(1234)
 RF_treatment_classify_sig<-rf.significance(x=RF_treatment_classify,
                                            xdata=predictors,
                                            nperm=1000,
                                            ntree=1000)
+print(RF_treatment_classify_sig)
 
 #identifying important features
 RF_state_classify_imp <- as.data.frame(RF_treatment_classify$importance)
@@ -69,8 +75,7 @@ barplot(RF_state_classify_imp_sorted$MeanDecreaseAccuracy,
 #top 20 features
 barplot(RF_state_classify_imp_sorted[1:20,"MeanDecreaseAccuracy"],
         las=2, names.arg=RF_state_classify_imp_sorted[1:20,"features"] ,
-        ylab="Mean Decrease in Accuracy (Variable Importance)", main="Classification RF")  
-
+        ylab="Mean Decrease in Accuracy (Variable Importance)", main="Classification RF") 
 
 ## Plot mean abundance of top 20 most important OTUs
 top20_feat<-as.data.frame(RF_state_classify_imp_sorted$features[1:20])
@@ -174,10 +179,4 @@ ref = top20_m %>%
 input_rf = filter_taxa_from_input(input_16S_rar,
                                   taxa_IDs_to_keep = ref$OTU)
 mean(colSums(input_rf$data_loaded))
-
-# what taxa?
-tax_rf = input_rf$taxonomy_loaded
-        
-        
-        
-        
+      
